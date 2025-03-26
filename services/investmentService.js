@@ -1,6 +1,6 @@
 const moment = require('moment');
 const investmentRepository = require('../repositories/investmentRepository');
-const { validateInvestmentText, validateInvestmentValue, validateInvestmentDate } = require('./insvestmentValidation');
+const { validateInvestmentText, validateInvestmentValue, validateInvestmentDate } = require('./investmentValidation');
 
 async function getInvestments() {
   const investments = await investmentRepository.getInvestments();
