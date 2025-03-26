@@ -1,8 +1,30 @@
+const moment = require('moment');
 const investmentRepository = require('../repositories/investmentRepository');
 const { validateInvestmentText, validateInvestmentValue, validateInvestmentDate } = require('./insvestmentValidation');
 
 async function getInvestments() {
-  return await investmentRepository.getInvestments();
+  const investments = await investmentRepository.getInvestments();
+  const investmentsResponse = investments.map(investment => {
+    return {
+      ...investment.toObject(),
+      date: moment(investment.date).format('DD/MM/YYYY')
+    };
+  });
+  return investmentsResponse;
+}
+
+async function getInvestmentById(investmentId) {
+  const investment = await investmentRepository.getInvestmentById(investmentId);
+  if (investment == null) {
+    throw new Error ('Investment not found.');
+  }
+  const investmentDate = moment(investment.date).format('DD/MM/YYYY');
+  investment.date = investmentDate;
+  const investmentResponse = {
+    ...investment.toObject(),
+    date: investmentDate
+  }
+  return investmentResponse;
 }
 
 async function createInvestment(investmentBody) {
@@ -48,6 +70,7 @@ async function deleteInvestment(investmentId) {
 
 module.exports = {
   getInvestments,
+  getInvestmentById,
   createInvestment,
   updateInvestment,
   deleteInvestment

@@ -38,7 +38,7 @@ Antes de começar, certifique-se de ter os seguintes softwares instalados:
 
 2.  **Acesse a API:**
 
-    * A API estará disponível em `http://localhost:3000`.
+    * A API estará disponível em `http://localhost:3001`.
     * Use o Postman ou cURL para testar as rotas da API.
 
 ## Rotas da API
@@ -53,7 +53,7 @@ Antes de começar, certifique-se de ter os seguintes softwares instalados:
 * **Criar um investimento:**
 
     * Método: POST
-    * URL: `http://localhost:3000/investimentos`
+    * URL: `http://localhost:3001/investimentos`
     * Corpo (JSON):
 
         ```json
@@ -65,15 +65,20 @@ Antes de começar, certifique-se de ter os seguintes softwares instalados:
         }
         ```
 
+* **Consultar um investimento específico:**
+
+    * Método: GET
+    * URL: `http://localhost:3001/investments/:id`
+
 * **Listar investimentos:**
 
     * Método: GET
-    * URL: `http://localhost:3000/investimentos`
+    * URL: `http://localhost:3001/investments`
 
 * **Atualizar investimento:**
 
     * Método: PATCH
-    * URL: `http://localhost:3000/investimentos/:id`
+    * URL: `http://localhost:3001/investments/:id`
     * Corpo (JSON):
 
         ```json
@@ -85,4 +90,4 @@ Antes de começar, certifique-se de ter os seguintes softwares instalados:
 * **Excluir investimento:**
 
     * Método: DELETE
-    * URL: `http://localhost:3000/investimentos/:id`
+    * URL: `http://localhost:3001/investments/:id`

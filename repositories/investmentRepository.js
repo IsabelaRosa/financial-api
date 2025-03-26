@@ -2,7 +2,7 @@ const Investment = require('../models/investment');
 
 const getInvestments = async () => {
   try {
-    const investments = await Investment.find().lean();
+    const investments = await Investment.find();
     return investments;
   } catch (error) {
     throw new Error(error.message);

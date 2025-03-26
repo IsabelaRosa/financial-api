@@ -9,6 +9,16 @@ async function getInvestments(req, res) {
   }
 }
 
+async function getInvestmentById(req, res) {
+  const investmentId = req.params.id;
+  try {
+    const investments = await investmentService.getInvestmentById(investmentId);
+    res.status(200).json(investments);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+}
+
 async function createInvestment(req, res) {
   const investmentBody = req.body;
   try {
@@ -44,6 +54,7 @@ async function deleteInvestment(req, res) {
 
 module.exports = {
   getInvestments,
+  getInvestmentById,
   createInvestment,
   updateInvestment,
   deleteInvestment
